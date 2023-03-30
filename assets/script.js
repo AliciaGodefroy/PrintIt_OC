@@ -53,11 +53,11 @@ arrowRight.addEventListener('click', function() { // On crée un événement au 
 	}
 
 	//----------- Changement du dot_selected
-	let dotSelected = document.querySelector('.dot_selected');
-	dotSelected.className = "dot dot"+(currentSlide-1);
-	if (currentSlide === 0) {dotSelected.className = "dot dot"+(slides.length-1);}
-	dotSelected = document.querySelector('.dot'+currentSlide);
-	dotSelected.className = "dot " + "dot"+ currentSlide + " dot_selected" ;
+	let dotSelected = document.querySelector('.dot_selected'); // On récupère dans le DOM la div avec la class dot_selected
+	dotSelected.className = "dot dot"+(currentSlide-1); // On ajoute à la class dot la valeur de la slidee actuelle
+	if (currentSlide === 0) {dotSelected.className = "dot dot"+(slides.length-1);} // Si currentSlide est égale à 0 (quand on revient au début du slider), on ajoute la class dot+Valeur de la dernière slide == pour faire un slider infini
+	dotSelected = document.querySelector('.dot'+currentSlide); // Récupère dans le DOM la div avec la class dot+Valeur de la currentSlide
+	dotSelected.className = "dot " + "dot"+ currentSlide + " dot_selected" ; // On lui ajouter la class dot_selected
 
 	changeSlide(); // On appelle notre fonction changeSlide()
 });
