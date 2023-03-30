@@ -17,15 +17,17 @@ const slides = [
 	}
 ]
 
+// On récupère dans le DOM l'image et le texte de la slide et on déclare une variable currentSlide égale à 0 
 let slideImg = document.querySelector('.banner-img');
 let slideTxt = document.querySelector('.banner-txt');
 let currentSlide = 0;
 
-function updateSlide() {
-  slideImg.src = `./assets/images/slideshow/${slides[currentSlide].image}`;
-  slideTxt.innerHTML = slides[currentSlide].tagLine;
-}
 
+// On crée une fonction updateSlide pour changer l'image et le texte lorsqu'on appelle la fonction (au clic sur les flèches)
+function updateSlide() {
+  slideImg.src = `./assets/images/slideshow/${slides[currentSlide].image}`; // On change la valeur de l'attribut src dans l'image pour récupérer l'image de la slide en cours
+  slideTxt.innerHTML = slides[currentSlide].tagLine;  // On change la valeur du texte src pour récupérer la tagline de la slide en cours
+}
 updateSlide();
 
 
