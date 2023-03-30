@@ -52,6 +52,7 @@ arrowRight.addEventListener('click', function() { // On crée un événement au 
 		currentSlide = 0; // On revient au début du tableau
 	}
 
+	//----------- Changement du dot_selected
 	let dotSelected = document.querySelector('.dot_selected');
 	dotSelected.className = "dot dot"+(currentSlide-1);
 	if (currentSlide === 0) {dotSelected.className = "dot dot"+(slides.length-1);}
@@ -69,10 +70,12 @@ arrowLeft.addEventListener('click', function() {
 		currentSlide = slides.length - 1; // On revient à la dernière slide du tableau 
 	}
 
+	//----------- Changement du dot_selected
 	let dotSelected = document.querySelector('.dot_selected');
 	dotSelected.className = "dot dot"+(currentSlide+1);
 	if (currentSlide === (slides.length-1)) {dotSelected.className = "dot dot0";}
 	dotSelected = document.querySelector('.dot'+currentSlide);
 	dotSelected.className = "dot " + "dot"+ currentSlide + " dot_selected" ;
+	
 	changeSlide();
 });
