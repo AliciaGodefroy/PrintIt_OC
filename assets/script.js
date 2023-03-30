@@ -17,33 +17,29 @@ const slides = [
 	}
 ]
 
+//----------- Gestion des dots
+
+//  On crée une boucle pour itérer dans le tableau slides et afficher le nombre de dots en fonction du nombre de slide
+for (let i = 0; i < slides.length; i++) {
+	let dots = document.getElementById('dots');
+	let dot = document.createElement("div");
+	dot.className = "dot";
+	if ( i === 0 ){dot.className = "dot" + " dot_selected";}
+	dots.appendChild(dot);
+}
+
 // On récupère dans le DOM l'image et le texte de la slide et on déclare une variable currentSlide égale à 0 
 let slideImg = document.querySelector('.banner-img');
 let slideTxt = document.querySelector('.banner-txt');
 let currentSlide = 0;
 
 
-// On crée une fonction updateSlide pour changer l'image et le texte lorsqu'on appelle la fonction (au clic sur les flèches)
-function updateSlide() {
+// On crée une fonction changeSlide pour changer l'image et le texte lorsqu'on appelle la fonction (au clic sur les flèches)
+function changeSlide() {
   slideImg.src = `./assets/images/slideshow/${slides[currentSlide].image}`; // On change la valeur de l'attribut src dans l'image pour récupérer l'image de la slide en cours
   slideTxt.innerHTML = slides[currentSlide].tagLine;  // On change la valeur du texte src pour récupérer la tagline de la slide en cours
 }
-updateSlide();
-
-
-//----------- Gestion des dots
-
-// On récupère dans le DOM la div parent qui contient les dots
-let dots = document.getElementById('dots');
-
-//  On crée une boucle pour itérer dans le tableau slides et afficher le nombre de dots en fonction du nombre de slide
-for (let i = 0; i < slides.length; i++) {
-	let dots = document.getElementById('dots');
-	let dot = document.createElement("div");
-	dot.className = "dot dot"+i;
-	if ( i === 0 ){dot.className = "dot " + "dot"+i + " dot_selected";}
-	dots.appendChild(dot);
-}
+changeSlide();
 
 
 //----------- Gestion des flèches
@@ -55,7 +51,7 @@ arrowRight.addEventListener('click', function() { // On crée un événement au 
   if (currentSlide >= slides.length) { // Si la slide active est >= à la longueur du tableau "slides" (donc si on arrive à la fin du tableau)
     currentSlide = 0; // On revient au début du tableau
   }
-  updateSlide(); // On appelle notre fonction updateSlide()
+  changeSlide(); // On appelle notre fonction changeSlide()
 });
 
 let arrowLeft = document.querySelector('.arrow_left');
@@ -65,5 +61,5 @@ arrowLeft.addEventListener('click', function() {
   if (currentSlide < 0) { // Si la slide active revient au début et est inférieure à 0 (le début du tableau)
     currentSlide = slides.length - 1; // On revient à la dernière slide du tableau 
   }
-  updateSlide();
+  changeSlide();
 });
